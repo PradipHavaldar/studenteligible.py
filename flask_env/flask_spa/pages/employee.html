@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeRegistration</title>
+</head>
+<body>
+
+    <center><h1>Employee Information Management</h1></center>
+
+    {{result}}<br><br>
+    <form action="/emp/persist" method="post">
+            Employee Id : <input type="text" name="eid" readonly value="{{emp.id}}"> <br><br>
+            Employee Firstname : <input type="text" name="firstname" value="{{emp.firstname}}"> <br><br>
+            Employee Lastname : <input type="text" name="lastname" value="{{emp.lastname}}"> <br><br>
+            Employee Gender : <input type="radio" name="gender" value="Male"> Male
+                             <input type="radio" name="gender" value="Female"> Female
+        <br><br>
+            Employee Role : <select name="role">
+                                 <option value="0">--select--</option>
+                                <option value="SE" {% if emp.role =='SE' %} selected {%endif%}>Software Engineer</option>
+                                <option value="SSE" {% if emp.role =='SSE' %} selected {%endif%}>Sr. Software Engineer</option>
+                                <option value="TL" {% if emp.role =='TL' %} selected {%endif%}>Team Lead</option>
+                                <option value="MNG" {% if emp.role =='MNG' %} selected {%endif%}>Manager</option>
+                                <option value="PM" {% if emp.role =='PM' %} selected {%endif%}>Program Manager</option>
+                                <option value="CEO" {% if emp.role =='CEO' %} selected {%endif%}>CEO</option>
+                            </select> <br><br>
+        Employee Address : <textarea name="address"  rows="6" cols="20">
+                                {{emp.address}}
+
+    </textarea> <br><br>
+            Employee Skills : <select name="skills" multiple>
+                                 <option value="0">--select--</option>
+                                <option value="PY">Python</option>
+                                <option value="JD">Java</option>
+                                <option value="NG">Angular</option>
+                                <option value="DB">Database</option>
+                                <option value="DS">Data Science</option>
+                                <option value="ML">Machine Learning</option>
+                            </select> <br><br>
+            Employee Project Domain :
+                            <input type="checkbox" name="project" value="Banking"> Banking
+                            <input type="checkbox" name="project" value="Insurance"> Insurance
+                            <input type="checkbox" name="project" value="CRM"> CRM
+                            <input type="checkbox" name="project" value="HealthCare"> HealthCare
+                            <input type="checkbox" name="project" value="Other"> Other
+
+                <br><br>
+            Employee Age* : <input type="text" name="age" value="{{emp.age}}"> &nbsp;&nbsp; <font color="red">{{ageerror}}</font> <br><br>
+            Employee Email : <input type="text" name="email" value="{{emp.email}}"> <br><br>
+            Employee Salary : <input type="text" name="salary" value="{{emp.salary}}"> <br><br>
+            Employee Contact : <input type="text" name="contact" value="{{emp.contact}}"> <br><br>
+        <input type="submit">
+
+
+    </form>
+
+
+    {% if emplist %}
+
+<table border="1">
+        <thead>
+                <th>EMPID </th>   <th>EMPName </th>
+                <th>EMP Contact </th>  <th>EMP DOMAIN </th><th>EMP ROLE </th>
+                <th>EMP Email </th> <th>Action</th>
+        </thead>
+
+        <tbody>
+                {% for emp in emplist %}
+                    <tr>
+                        <td>{{emp.id}}</td>
+                         <td>
+                             {% if emp.gender=='Male' %}
+                                    Mr.
+                             {% else %}
+                                    Mrs.
+                             {% endif %}
+                             {{emp.firstname}} &nbsp; {{emp.lastname}}
+                         </td>
+                         <td>{{emp.contact}}</td>
+                         <td>{{emp.domain}}</td> <td>{{emp.role}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>
+                            <a href="/edit/{{emp.id}}">EDIT</a>
+                            <a href="/delete/{{emp.id}}">DELETE</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+
+</table>
+    {% else %}
+        <h2>No Records...!</h2>
+    {% endif%}
+
+
+
+</body>
+</html>

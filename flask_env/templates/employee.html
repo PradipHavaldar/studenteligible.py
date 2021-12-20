@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeInformation</title>
+</head>
+<body>
+
+    <font color="green"></font>
+        {{message}}
+        </font>
+
+        <br><br>
+
+        <form method="post" action="/emp/add/">
+
+            Employee Id :   <input type="text" name="eid">    <br><br>
+            Employee Name :  <input type="text" name="enm">     <br><br>
+            Employee Age :    <input type="text" name="eage">    <br><br>
+            Employee Salary :  <input type="text" name="esal">   <br><br>
+            Employee Role :    <input type="text" name="erole">   <br><br>
+            Employee Gender :  <input type="radio" value="M" name="gender"> Male <input type="radio" value="F" name="gender"> Female<br><br>
+            Employee Skills :  <input type="checkbox" value="PY" name="skill"> PYTHON DEVELOPER
+                                <input type="checkbox" value="JD" name="skill"> JAVA DEVELOPER
+                                <input type="checkbox" value="DS" name="skill"> DATA-SCIENCE
+                                <input type="checkbox" value="WB" name="skill"> WEB-FRAMEWORKS
+            <br><br>
+            Employee City  : <select name="city">
+                                     <option value="0">--select--</option>
+                                    <option value="P">Pune</option>
+                                    <option value="M">Mumbai</option>
+                                    <option value="L">Latur</option>
+                                    <option value="S">Sangli</option>
+
+                                </select> <br><br>
+
+             Employee Hobbies  : <select name="hobbies" multiple>
+                                    <option value="CA">Carrom</option>
+                                    <option value="WT">WatchingTv</option>
+                                    <option value="CR">Cricket</option>
+                                    <option value="RD">Reading</option>
+
+                                </select> <br><br>
+            <input type="submit">
+        </form>
+
+
+
+</body>
+</html>

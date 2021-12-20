@@ -1,0 +1,4 @@
+{
+  "CHROME_DRIVER_PATH": "D:\\pythonwork\\selenium_automation_framework\\drivers\\chromedriver.exe",
+  "FIREFOX_DRIVER_PATH": "D:\\pythonwork\\selenium_automation_framework\\drivers\\geckodriver.exe"
+}
